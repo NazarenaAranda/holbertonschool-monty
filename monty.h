@@ -36,7 +36,8 @@ stack_t push(stack_t pila, int num);
 void pint(stack_t pila);
 stack_t pop(stack_t pila);
 stack_t swap(stack_t pila);
-stack_t add(stack_t pila, int num);
+stack_t add(stack_t pila);
+instruction_t func_finder(char *word, int num);
 void nop();*/
 
 #endif

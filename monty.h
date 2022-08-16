@@ -1,6 +1,12 @@
 #ifndef monty_h
 #define monty_h
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -31,13 +37,18 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/**void pall(stack_t pila);
-stack_t push(stack_t pila, int num);
-void pint(stack_t pila);
-stack_t pop(stack_t pila);
-stack_t swap(stack_t pila);
-stack_t add(stack_t pila);
-instruction_t func_finder(char *word, int num);
+
+instruction_t func_finder(char *word);
+void push(stack_t **pila, unsigned int line_number);
+void pint(stack_t **pila, unsigned int line_number);
+
+/**void pall(stack_t **pila, unsigned int line_number);
+stack_t push(stack_t **pila, unsigned int line_number);
+void pint(stack_t **pila, unsigned int line_number);
+stack_t pop(stack_t **pila, unsigned int line_number);
+stack_t swap(stack_t **pila, unsigned int line_number);
+stack_t add(stack_t **pila, unsigned int line_number);
+instruction_t func_finder(char *word);
 void nop();*/
 
 #endif

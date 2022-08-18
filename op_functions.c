@@ -48,7 +48,7 @@ void push(stack_t **pila, unsigned int line_number)
  * Return: void
  */
 
-void pall(stack_t **pila, unsigned int line_number)
+void pall(stack_t **pila, unsigned int line_number __attribute__((unused)))
 {
 	stack_t *aux = *pila;
 

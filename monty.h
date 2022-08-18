@@ -40,7 +40,7 @@ typedef struct instruction_s
 
 instruction_t func_finder(char *word);
 void push(stack_t **pila, unsigned int line_number);
-void pall(stack_t **pila, unsigned int line_number);
+void pall(stack_t **pila, unsigned int line_number __attribute__((unused)));
 void pint(stack_t **pila, unsigned int line_number);
 void pop(stack_t **pila, unsigned int line_number);
 void swap(stack_t **pila, unsigned int line_number);

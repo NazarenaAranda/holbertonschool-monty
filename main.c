@@ -36,10 +36,10 @@ int main(int argc, char *argv[])
 {
 	instruction_t ins;
 	stack_t *pila = NULL;
-	int i = 0, j = 0;
+	int j = 1;
 	FILE *stream;
 	size_t size = 0;
-	char *buf = NULL, *tok = NULL, **arr = NULL, *word = NULL;
+	char *buf = NULL, *tok = NULL;
 
 	if (argc != 2)
 	{
@@ -54,7 +54,6 @@ int main(int argc, char *argv[])
 	}
 	while (getline(&buf, &size, stream) != -1)
 	{
-		i = 0;
 		tok = strtok(buf, "\n\t $");
 		ins = func_finder(tok);
 		if (!ins.f)

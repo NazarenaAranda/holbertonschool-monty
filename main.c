@@ -55,23 +55,8 @@ int main(int argc, char *argv[])
 	while (getline(&buf, &size, stream) != -1)
 	{
 		i = 0;
-		arr = malloc(sizeof(char *) * 3);
-		arr[2] = NULL;
 		tok = strtok(buf, "\n\t $");
-		arr[i] = tok;
-		while (tok)
-		{
-			i++;
-			if (i > 1)
-			break;
-			tok = strtok(NULL, "\n\t $");
-			if (tok)
-			{
-				gv = tok;
-				arr[i] = tok;
-			}
-		}
-		ins = func_finder(arr[0]);
+		ins = func_finder(tok);
 		if (!ins.f)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", j, ins.opcode);

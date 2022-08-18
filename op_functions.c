@@ -11,19 +11,21 @@
 void push(stack_t **pila, unsigned int line_number)
 {
 	stack_t *node = NULL;
+	char *tok = NULL;
 
+	tok = strtok(NULL, "\t\n ");
 	node = malloc(sizeof(stack_t));
 	if (!node)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	if (atoi(gv) == 0)
+	if (atoi(tok) == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	node->n = atoi(gv);
+	node->n = atoi(tok);
 	node->prev = NULL;
 	if (*pila == NULL)
 	{

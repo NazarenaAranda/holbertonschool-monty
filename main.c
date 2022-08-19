@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 {
 	instruction_t ins;
 	stack_t *pila = NULL;
-	int j = 1;
+	int j = 0;
 	FILE *stream;
 	size_t size = 0;
 	char *buf = NULL, *tok = NULL;
@@ -54,15 +54,17 @@ int main(int argc, char *argv[])
 	}
 	while (getline(&buf, &size, stream) != -1)
 	{
+		j++;
 		tok = strtok(buf, "\n\t $");
+		if (!tok)
+			continue;
 		ins = func_finder(tok);
 		if (!ins.f)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", j, ins.opcode);
+			fprintf(stderr, "L%d: unknown instruction %s\n", j, tok);
 			exit(EXIT_FAILURE);
 		}
 		(*(ins.f))(&pila, j);
-		j++;
 	}
 	fclose(stream);
 	freedom(buf, &pila);

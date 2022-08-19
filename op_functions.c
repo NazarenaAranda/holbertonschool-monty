@@ -14,15 +14,15 @@ void push(stack_t **pila, unsigned int line_number)
 	char *tok = NULL;
 
 	tok = strtok(NULL, "\t\n ");
+	if (!tok || valid_number(tok) == 0)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 	node = malloc(sizeof(stack_t));
 	if (!node)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-	if (atoi(tok) == 0)
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	node->n = atoi(tok);
@@ -53,7 +53,10 @@ void pall(stack_t **pila, unsigned int line_number __attribute__((unused)))
 	stack_t *aux = *pila;
 
 	if (!aux)
+	{
+		printf("0\n");
 		return;
+	}
 	while (aux)
 	{
 		printf("%d\n", aux->n);
@@ -98,8 +101,9 @@ void pop(stack_t **pila, unsigned int line_number)
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	*pila = (*pila)->next;
-	(*pila)->prev = NULL;
+	*pila = aux->next;
+	if (aux->next)
+		aux->next->prev = NULL;
 	free(aux);
 }
 
@@ -116,16 +120,14 @@ void swap(stack_t **pila, unsigned int line_number)
 	stack_t *aux = *pila;
 	int i = 0, value;
 
-	if (!aux)
-		return;
 	for (; aux; aux = aux->next)
 		i++;
-	value = (*pila)->n;
 	if (i < 2)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+	value = (*pila)->n;
 	(*pila)->n = (*pila)->next->n;
 	(*pila)->next->n = value;
 }

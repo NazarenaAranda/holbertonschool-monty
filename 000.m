@@ -1,10 +1,4 @@
-push 1
-pint
-pop
+push 4
 push 2
-pint
-pop
-push 3
-pint
-pop
+div
 pall

@@ -11,7 +11,9 @@ instruction_t func_finder(char *word)
 {
 	instruction_t func[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint},
-		{"pop", pop}, {"swap", swap}, {"add", add}, {"nop", nop}, {NULL, NULL}
+		{"pop", pop}, {"swap", swap}, {"add", add}, {"nop", nop},
+		{"sub", sub}, {"div", _div}, {"mul", mul},
+		{"mod", mod}, {NULL, NULL}
 	};
 	int i = 0;
 

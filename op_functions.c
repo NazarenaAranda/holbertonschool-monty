@@ -53,10 +53,7 @@ void pall(stack_t **pila, unsigned int line_number __attribute__((unused)))
 	stack_t *aux = *pila;
 
 	if (!aux)
-	{
-		printf("0\n");
 		return;
-	}
 	while (aux)
 	{
 		printf("%d\n", aux->n);

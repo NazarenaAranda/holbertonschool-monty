@@ -61,10 +61,7 @@ int valid_number(char *tok)
 	for (; tok[i]; i++)
 	{
 		if (tok[i] == '-' || tok[i] == '+')
-		{
-			i++;
 			continue;
-		}
 		if (isdigit(tok[i]) == 0)
 			return (0);
 	}

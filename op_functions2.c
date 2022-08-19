@@ -67,7 +67,7 @@ void sub(stack_t **pila, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	aux = *pila;
-	sb = aux->n - aux->next->n;
+	sb = aux->next->n - aux->n;
 	aux = aux->next;
 	pop(pila, line_number);
 	aux->n = sb;

@@ -50,6 +50,10 @@ void sub(stack_t **pila, unsigned int line_number);
 void _div(stack_t **pila, unsigned int line_number);
 void mul(stack_t **pila, unsigned int line_number);
 void mod(stack_t **pila, unsigned int line_number);
+void pchar(stack_t **pila, unsigned int line_number);
+void pstr(stack_t **pila, unsigned int line_number __attribute__((unused)));
+void rotl(stack_t **pila, unsigned int line_number __attribute__((unused)));
+void rotr(stack_t **pila, unsigned int line_number __attribute__((unused)));
 int valid_number(char *tok);
 
 #endif

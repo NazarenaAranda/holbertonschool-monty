@@ -58,6 +58,8 @@ int main(int argc, char *argv[])
 		tok = strtok(buf, "\n\t $");
 		if (!tok)
 			continue;
+		if (tok[0] == '#')
+			continue;
 		ins = func_finder(tok);
 		if (!ins.f)
 		{

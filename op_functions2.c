@@ -111,24 +111,29 @@ void _div(stack_t **pila, unsigned int line_number)
 }
 
 /**
- * valid_number - checks if the string only contains digit chars
- * @tok: string
+ * mul - multiplies the second top element of the
+ * stack with the top element of the stack
+ * @pila: struct stack_t (stack)
+ * @line_number: int (number of the instruction line)
  *
- * Return: 1 if the string only contain digits, otherwise 0
+ * Return: void
  */
 
-int valid_number(char *tok)
+void mul(stack_t **pila, unsigned int line_number)
 {
-	int i = 0;
+	int mul = 0, i = 0;
+	stack_t *aux = *pila;
 
-	if (!tok)
-		return (0);
-	for (; tok[i]; i++)
+	for (; aux; aux = aux->next)
+		i++;
+	if (i < 2)
 	{
-		if (tok[i] == '-' || tok[i] == '+')
-			continue;
-		if (isdigit(tok[i]) == 0)
-			return (0);
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
 	}
-	return (1);
+	aux = *pila;
+	mul = aux->n * aux->next->n;
+	aux = aux->next;
+	pop(pila, line_number);
+	aux->n = mul;
 }

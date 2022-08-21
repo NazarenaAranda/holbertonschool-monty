@@ -23,3 +23,29 @@ int valid_number(char *tok)
 	}
 	return (1);
 }
+
+/**
+ * add_node_end - adds a node at the end of the list
+ * @pila: stack
+ * @node: node to be added
+ *
+ * Return:void
+ */
+
+void add_node_end(stack_t **pila, stack_t **node)
+{
+	stack_t *aux = *pila;
+
+	(*node)->next = NULL;
+	if (!aux)
+	{
+		*pila = *node;
+		(*node)->prev = NULL;
+	} else
+	{
+		while (aux->next)
+			aux = aux->next;
+		(*node)->prev = aux;
+		aux->next = *node;
+	}
+}

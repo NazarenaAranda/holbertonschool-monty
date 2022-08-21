@@ -23,7 +23,7 @@ void add(stack_t **pila, unsigned int line_number)
 	if (i < 2)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-		gv = 1;
+		gv.n = 1;
 		return;
 	}
 	sum = aux->n + aux->next->n;
@@ -65,7 +65,7 @@ void sub(stack_t **pila, unsigned int line_number)
 	if (i < 2)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
-		gv = 1;
+		gv.n = 1;
 		return;
 	}
 	aux = *pila;
@@ -95,13 +95,13 @@ void _div(stack_t **pila, unsigned int line_number)
 	if (i < 2)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
-		gv = 1;
+		gv.n = 1;
 		return;
 	}
 	if (aux->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
-		gv = 1;
+		gv.n = 1;
 		return;
 	}
 	dv = aux->next->n / aux->n;
@@ -129,7 +129,8 @@ void mul(stack_t **pila, unsigned int line_number)
 	if (i < 2)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
+		gv.n = 1;
+		return;
 	}
 	aux = *pila;
 	mul = aux->n * aux->next->n;

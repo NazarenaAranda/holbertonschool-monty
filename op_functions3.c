@@ -20,14 +20,14 @@ void mod(stack_t **pila, unsigned int line_number)
 	if (i < 2)
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
-		gv = 1;
+		gv.n = 1;
 		return;
 	}
 	aux = *pila;
 	if (aux->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
-		gv = 1;
+		gv.n = 1;
 		return;
 	}
 	mod = aux->next->n % aux->n;
@@ -51,13 +51,13 @@ void pchar(stack_t **pila, unsigned int line_number)
 	if (!aux)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
-		gv = 1;
+		gv.n = 1;
 		return;
 	}
 	if (aux->n < 32 || aux->n > 127)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
-		gv = 1;
+		gv.n = 1;
 		return;
 	}
 	printf("%c\n", aux->n);

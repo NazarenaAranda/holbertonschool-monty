@@ -6,7 +6,18 @@
 #include <string.h>
 #include <ctype.h>
 
-extern int gv;
+/**
+ * struct gv_s - contains a value to exit if it requires
+ * and the mode to queue or stack
+ * @n: integer (1 if exit ins neccesary)
+ * @mode: integer (1 for queue mode, 0 for stack mode)
+ */
+typedef struct gv_s
+{
+	int n;
+	int mode;
+} gv_t;
+extern gv_t gv;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -54,6 +65,9 @@ void pchar(stack_t **pila, unsigned int line_number);
 void pstr(stack_t **pila, unsigned int line_number __attribute__((unused)));
 void rotl(stack_t **pila, unsigned int line_number __attribute__((unused)));
 void rotr(stack_t **pila, unsigned int line_number __attribute__((unused)));
+void queue(stack_t **pila, unsigned int line_number);
+void stack(stack_t **pila, unsigned int line_number);
+void add_node_end(stack_t **pila, stack_t **node);
 int valid_number(char *tok);
 
 #endif

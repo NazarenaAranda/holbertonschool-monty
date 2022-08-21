@@ -17,27 +17,32 @@ void push(stack_t **pila, unsigned int line_number)
 	if (!tok || valid_number(tok) == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		gv = 1;
+		gv.n = 1;
 		return;
 	}
 	node = malloc(sizeof(stack_t));
 	if (!node)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		gv = 1;
+		gv.n = 1;
 		return;
 	}
 	node->n = atoi(tok);
-	node->prev = NULL;
-	if (*pila == NULL)
+	if (gv.mode == 1)
+		add_node_end(pila, &node);
+	else
 	{
-		node->next = NULL;
-		*pila = node;
-	} else
-	{
-		node->next = *pila;
-		(*pila)->prev = node;
-		*pila = node;
+		node->prev = NULL;
+		if (*pila == NULL)
+		{
+			node->next = NULL;
+			*pila = node;
+		} else
+		{
+			node->next = *pila;
+			(*pila)->prev = node;
+			*pila = node;
+		}
 	}
 }
 
@@ -78,7 +83,7 @@ void pint(stack_t **pila, unsigned int line_number)
 	if (!aux)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		gv = 1;
+		gv.n = 1;
 		return;
 	}
 	printf("%d\n", aux->n);
@@ -99,7 +104,7 @@ void pop(stack_t **pila, unsigned int line_number)
 	if (!aux)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		gv = 1;
+		gv.n = 1;
 		return;
 	}
 	*pila = aux->next;
@@ -126,7 +131,7 @@ void swap(stack_t **pila, unsigned int line_number)
 	if (i < 2)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-		gv = 1;
+		gv.n = 1;
 		return;
 	}
 	value = (*pila)->n;

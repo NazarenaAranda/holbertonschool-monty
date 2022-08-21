@@ -14,7 +14,8 @@ instruction_t func_finder(char *word)
 		{"pop", pop}, {"swap", swap}, {"add", add}, {"nop", nop},
 		{"sub", sub}, {"div", _div}, {"mul", mul},
 		{"mod", mod}, {"pchar", pchar}, {"pstr", pstr},
-		{"rotl", rotl}, {"rotr", rotr}, {NULL, NULL}
+		{"rotl", rotl}, {"rotr", rotr}, {"stack", stack},
+		{"queue", queue}, {NULL, NULL}
 	};
 	int i = 0;
 

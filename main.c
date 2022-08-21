@@ -64,7 +64,8 @@ int main(int argc, char *argv[])
 			fprintf(stderr, "L%d: unknown instruction %s\n", j, tok);
 			gv = 1;
 		}
-		(*(ins.f))(&pila, j);
+		else
+			(*(ins.f))(&pila, j);
 	}
 	fclose(stream);
 	freedom(buf, &pila);

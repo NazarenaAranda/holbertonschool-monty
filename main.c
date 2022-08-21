@@ -1,6 +1,6 @@
 #include "monty.h"
 
-char *gv = NULL;
+int gv = 0;
 
 /**
  * freedom - free everything
@@ -62,11 +62,13 @@ int main(int argc, char *argv[])
 		if (!ins.f)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", j, tok);
-			exit(EXIT_FAILURE);
+			gv = 1;
 		}
 		(*(ins.f))(&pila, j);
 	}
 	fclose(stream);
 	freedom(buf, &pila);
+	if (gv == 1)
+		exit(EXIT_FAILURE);
 	return (0);
 }

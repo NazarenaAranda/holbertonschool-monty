@@ -6,7 +6,7 @@
 #include <string.h>
 #include <ctype.h>
 
-extern char *gv;
+extern int gv;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

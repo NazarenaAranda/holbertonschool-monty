@@ -11,4 +11,8 @@ push 1
 sub
 push 2
 div
+push 12
+mul
+push 9
+mod
 pall

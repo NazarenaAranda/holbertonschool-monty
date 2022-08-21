@@ -48,14 +48,15 @@ void mod(stack_t **pila, unsigned int line_number)
 	if (i < 2)
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
+		gv = 1;
 	}
+	aux = *pila;
 	if (aux->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
-		exit(EXIT_FAILURE);
+		gv = 1;
+		return;
 	}
-	aux = *pila;
 	mod = aux->next->n % aux->n;
 	aux = aux->next;
 	pop(pila, line_number);
